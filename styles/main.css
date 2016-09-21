@@ -80,7 +80,12 @@ body.landing {
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
- cursor: pointer;
+  cursor: pointer;
+}
+
+.links-container .navbar-link:active {
+  text: rgb(233,50,117);
+  background-color: white;
 }
 
 .links-container .navbar-link:hover {
