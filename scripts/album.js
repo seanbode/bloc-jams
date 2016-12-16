@@ -121,27 +121,28 @@ window.onload = function() {
 	});
 	
 	var findParentByClassName = function(element, targetClass) {
-    if (element) {
-			if (element.parentElement?) {
-				var currentParent = element.parentElement;
-				while (currentParent.className != targetClass && currentParent.className !== null) {
-					currentParent = currentParent.parentElement;
-				};
-			} else if (currentParent === null){
-				alert("No parent found");
-			}; else if (currentParent.className != targetClass) {
-				alert("No parent found with that class name");
+//    1. if element is undefined then return undefined x
+//		2. get parent of our current element. x
+//		3. check parent class name.
+//		if className is equal to targetClass then return parent element.
+//		otherwise we'll repeat the last 3 steps. Using parent as current element.
+
+		if (element) {
+			var currentParent = element.parentElement;
+			if (currentParent == undefined) {
+				return null;
 			};
-		
-			return currentParent;
-    }
+			while (currentParent.className != targetClass) {
+				if (element.parentElement) {	
+					currentParent = element.parentElement;
+				} else {
+					return null;
+				} 
+			};
+		} else {
+			return null;
+		};
 };
-	
-//	songListContainer.addEventListener('onClick', function(event) {
-//		if (event.target.parentElement.className === 'album-view-song-item') {
-//			event.target.parentElement.querySelector('.song-item-number').innerHTML = pauseButtonTemplate;
-//		}
-//	});
 	
 	for (var i = 0; i < songRows.length; i++) {
 		songRows[i].addEventListener('mouseleave', function(event) {
@@ -156,7 +157,7 @@ window.onload = function() {
 		
 		songRows[i].addEventListener('click', function(event) {
 			clickHandler(event.target);
-		};
+		});
 
 	}
 };
