@@ -17,7 +17,7 @@ var setSong = function(songNumber) {
     currentSoundFile.stop();
   }
   currentlyPlayingSongNumber = parseInt(songNumber);
-  createSongFromAlbum = currentAlbum.songs[songNumber - 1]
+  currentSongFromAlbum = currentAlbum.songs[songNumber - 1]
   currentSoundFile = new buzz.sound(currentSongFromAlbum.audioUrl, {
     formats: [ 'mp3' ],
     preload: true
@@ -208,5 +208,5 @@ $(document).ready(function() {
   setCurrentAlbum(albumPicasso);
   $previousButton.click(previousSong);
   $nextButton.click(nextSong);
-  $playPauseSelector.click(togglePlayFromPlayerBar);
+  $playPauseSelector.click(togglePlayFromPlayerbar);
 });
